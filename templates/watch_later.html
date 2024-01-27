@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watch Later List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Include the login page CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
+</head>
+<body>
+    <h1>Watch Later List</h1>
+    <ul>
+        {% for movie in watch_later_list %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

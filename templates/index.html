@@ -1,0 +1,248 @@
+
+ 
+ <!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color:#f5ecd3;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px 5px 5px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .recommendations {
+            margin-top: 20px;
+        }
+
+        .recommendations h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .recommendations ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .recommendations li {
+            margin-bottom: 5px;
+        }
+
+        .recommendations li:first-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <div class="form-container">
+        <form method="POST" action="/recommend">
+            <label for="movie_name">Enter your favorite movie:</label>
+            <input type="text" id="movie_name" name="movie_name" required><br><br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+
+    {% if movie_name %}
+    <div class="recommendations">
+        <h3>Recommended Movies for "{{ movie_name }}"</h3>
+        <ul>
+            {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html> -->
+
+
+<!-- updated -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        {% if 'username' in session %}
+            <a href="/">Home</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+    </nav>
+
+    <section>
+        {% if 'username' in session %}
+            <h2>Welcome, {{ session['username'] }}!</h2>
+            <form action="/recommend" method="post">
+                <label for="movie_name">Enter a movie name:</label>
+                <input type="text" id="movie_name" name="movie_name" required>
+                <button type="submit">Get Recommendations</button>
+            </form>
+
+            {% if recommendations %}
+                <h3>Recommended Movies:</h3>
+                <ul>
+                    {% for movie in recommendations %}
+                        <li>{{ movie }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+        {% else %}
+            <p>Please log in to access the movie recommender.</p>
+        {% endif %}
+    </section>
+
+</body>
+
+</html> -->
+
+
+<!-- working code for app1.py -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Movie Recommendation System</h1>
+
+    <div class="login-logout">
+        {% if 'username' in session %}
+        <p>Welcome, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+        <p><a href="{{ url_for('login') }}">Login</a></p>
+        {% endif %}
+    </div>
+
+    <div class="form-container">
+        <form method="POST" action="/recommend">
+            <label for="movie_name">Enter your favorite movie:</label>
+            <input type="text" id="movie_name" name="movie_name" required><br><br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+
+    {% if movie_name %}
+    <div class="recommendations">
+        <h3>Recommended Movies for "{{ movie_name }}"</h3>
+        <ul>
+            {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+
+</html> -->
+
+
+<!-- for app2.py -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Movie Recommendation System</h1>
+
+    <div class="login-logout">
+        {% if 'username' in session %}
+            <p>Welcome, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+            <p><a href="{{ url_for('login') }}">Login</a></p>
+        {% endif %}
+    </div>
+
+    <div class="form-container">
+        <form method="POST" action="/recommend">
+            <label for="movie_name">Enter your favorite movie:</label>
+            <input type="text" id="movie_name" name="movie_name" required><br><br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+
+    {% if movie_name %}
+        <div class="recommendations">
+            <h3>Recommended Movies for "{{ movie_name }}"</h3>
+            <ul>
+                {% for recommendation in recommendations %}
+                    <li>
+                        {{ recommendation['title'] }} 
+                        <ul>
+                            <li><strong>Platform:</strong> {{ recommendation['platform'] }}</li>
+                            <li><strong>IMDb Rating:</strong> {{ recommendation['imdb_rating'] }}</li>
+                            <li><strong>Rotten Tomatoes Rating:</strong> {{ recommendation['rotten_tomatoes_rating'] }}</li>
+                            <li><strong>Runtime:</strong> {{ recommendation['runtime'] }}</li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+
+</html>

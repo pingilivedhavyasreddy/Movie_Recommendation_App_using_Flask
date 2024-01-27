@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Movie Details</h1>
+
+    <div class="login-logout">
+        <p>Welcome, {{ username }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+
+    <div class="movie-details">
+        <h2>{{ movie_details['Title'] }}</h2>
+        <ul>
+            <li><strong>Year:</strong> {{ movie_details['Year'] }}</li>
+            <li><strong>Age:</strong> {{ movie_details['Age'] }}</li>
+            <li><strong>IMDb Rating:</strong> {{ movie_details['IMDb'] }}</li>
+            <li><strong>Rotten Tomatoes Rating:</strong> {{ movie_details['Rotten Tomatoes'] }}</li>
+            <li><strong>Netflix:</strong> {{ "Yes" if movie_details['Netflix'] == 1 else "No" }}</li>
+            <li><strong>Hulu:</strong> {{ "Yes" if movie_details['Hulu'] == 1 else "No" }}</li>
+            <li><strong>Prime Video:</strong> {{ "Yes" if movie_details['Prime Video'] == 1 else "No" }}</li>
+            <li><strong>Disney+:</strong> {{ "Yes" if movie_details['Disney+'] == 1 else "No" }}</li>
+            <li><strong>Type:</strong> {{ movie_details['Type'] }}</li>
+            <li><strong>Directors:</strong> {{ movie_details['Directors'] }}</li>
+            <li><strong>Genres:</strong> {{ movie_details['Genres'] }}</li>
+            <li><strong>Country:</strong> {{ movie_details['Country'] }}</li>
+            <li><strong>Language:</strong> {{ movie_details['Language'] }}</li>
+            <li><strong>Runtime:</strong> {{ movie_details['Runtime'] }} minutes</li>
+        </ul>
+    </div>
+</body>
+
+</html>
